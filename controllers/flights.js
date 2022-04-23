@@ -1,10 +1,17 @@
 // Import the flight Schema, so we can create the flight object
+const res = require('express/lib/response');
 const Flight = require('../models/flight');
 
+// this is a template we will render when the user visits
+// http://localhost:3000/flights/new
 function newFlight(req, res) {
-    // this is a template we will render when the user visits
-    // http://localhost:3000/flights/new
-    res.render('flights/new');
+    const newFlight = new Flight();
+    // Obtain the default date
+    const dt = newFlight.departs;
+    // Format the date for the value attribute of the input
+    let departsDate = `${dt.getFullYear()}-${(dt.getMonth() + 1).toString().padStart(2, '0')}`;
+    departsDate += `-${dt.getDate().toString().padStart(2, '0')}T${dt.toTimeString().slice(0, 5)}`;
+    res.render('flights/new', { departsDate });
 };
 
 function create(req, res) {
