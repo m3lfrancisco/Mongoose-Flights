@@ -9,19 +9,18 @@ function newFlight(req, res) {
     // Obtain the default date
     const dt = newFlight.departs;
     // Format the date for the value attribute of the input
-    let departsDate = `${dt.getFullYear()}-${(dt.getMonth() + 1).toString().padStart(2, '0')}`;
-    departsDate += `-${dt.getDate().toString().padStart(2, '0')}T${dt.toTimeString().slice(0, 5)}`;
+    let departsDate = dt.toISOString().slice(0, 16)
     res.render('flights/new', { departsDate });
 };
 
 function create(req, res) {
+    if (req.body.departs === '') delete req.body.departs;
     // Create the flight object
     const flight = new Flight(req.body);
     
     // Save the flight object
     flight.save(function(err) {
         if(err) return res.render('flights/new');
-        console.log(flight);
         // If we save the movie object, then return the user to the index page
         res.redirect('/flights');
     });
