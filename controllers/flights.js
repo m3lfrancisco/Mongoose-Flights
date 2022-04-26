@@ -10,7 +10,7 @@ function newFlight(req, res) {
     const dt = newFlight.departs;
     // Format the date for the value attribute of the input
     let departsDate = dt.toISOString().slice(0, 16)
-    res.render('flights/new', { departsDate });
+    res.render('flights/new', { title: 'Add Flight', departsDate });
 };
 
 function create(req, res) {
@@ -28,14 +28,19 @@ function create(req, res) {
 
 function index(req, res) {
     Flight.find({}, function(err, flights) {
-        res.render('flights/index', {
-            flights
-        })
+        res.render('flights/index', { title: 'All Flights', flights});
+    });
+};
+
+function show(req, res) {
+    Flight.findById(req.params.id, function(err, flight) {
+        res.render('flights/show', { title: 'Flight Details', flight});
     });
 };
 
 module.exports = {
     new: newFlight,
     create,
-    index
+    index,
+    show
 };

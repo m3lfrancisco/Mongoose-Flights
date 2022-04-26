@@ -1,0 +1,55 @@
+<%- include('../partials/header') %>
+
+<section id="show-page">
+    <div>Airline: </div>
+    <div><%= flight.airline %></div>
+    <div>Airport: </div>
+    <div><%= flight.airport %></div>
+    <div>Flight No:</div>
+    <div><%= flight.flightNo %></div>
+    <div>Departure Date/Time: </div>
+    <div><%= flight.departs %></div>
+</section>
+
+<br><br><h2>Destinations</h2>
+<form action="/flights/<%= flight._id %>/destinations" method="POST" class="form-horizontal" align="center">
+    <label>Airport:
+    <select name="airport">
+        <option selected>Choose Airport</option>
+        <option value="AUS">AUS</option>
+        <option value="DFW">DFW</option>
+        <option value="DEN">DEN</option>
+        <option value="LAX">LAX</option>
+        <option value="SAN">SAN</option>
+    </select>
+    </label><br><br>
+    <label>Arrival:
+        <input type="datetime-local" name="arrival">
+    </label><br><br>
+    <button type="submit" class="btn btn-success">Add Destination</button>
+</form>
+
+<% if(flight.destinations.length) { %>
+    <table>
+        <thead>
+            <tr>
+                <th>Destinations</th>
+                <th>Airport</th>
+                <th>Arrival</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% flight.destinations.forEach(function(d) { %>
+                <tr>
+                    <td><%= d.destinations %></td>
+                    <td><%= d.airport %></td>
+                    <td><%= d.arrival %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+<% } else { %>
+    <h5>No Destinations Added Yet</h5>
+<% } %>
+
+<%- include('../partials/footer') %>

@@ -1,48 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mongoose Flights</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-</head>
-<body>
-    <nav class="navbar sticky-top navbar-light" style="background-color: #e3f2fd;">
-        <div class="container-md">
-            <a class="nav-link active" href="/flights">ALL FLIGHTS</a>
-            <a class="navbar-brand" href="flights/new">ADD FLIGHT</a>
-        </div>
-    </nav>
-    <div>
-        <h1 align="center" style="margin: 30px;">Enter A New Flight</h1>
-        <form action="/flights" method="POST" class="form-horizontal" align="center">
-            <label>Airline:
-                <select name="airline">
-                    <option selected>Choose Airline</option>
-                    <option value="American">American</option>
-                    <option value="Southwest">Southwest</option>
-                    <option value="United">United</option>
-                </select>
-            </label><br><br>
-            <label>Airport:
-                <select name="airport">
-                    <option value="AUS">AUS</option>
-                    <option value="DFW">DFW</option>
-                    <option value="DEN" selected>DEN</option>
-                    <option value="LAX">LAX</option>
-                    <option value="SAN">SAN</option>
-                </select>
-            </label><br><br>
-            <label>Flight No:
-                <input type="text" name="flightNo" min="10" max="9999"> 
-            </label><br><br>
-            <label>Departs
-                <input type="datetime-local" name="departs">
-            </label><br><br>
-            <button type="submit" class="btn btn-success">Add Flight</button>
-        </form>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>        
-</body>
-</html>
+<%- include('../partials/header') %>
+    
+<div>
+    <form action="/flights" method="POST" class="form-horizontal" align="center">
+        <label>Airline:
+            <select name="airline">
+                <option selected>Choose Airline</option>
+                <option value="American">American</option>
+                <option value="Southwest">Southwest</option>
+                <option value="United">United</option>
+            </select>
+        </label><br><br>
+        <label>Airport:
+            <select name="airport">
+                <option value="AUS">AUS</option>
+                <option value="DFW">DFW</option>
+                <option value="DEN" selected>DEN</option>
+                <option value="LAX">LAX</option>
+                <option value="SAN">SAN</option>
+            </select>
+        </label><br><br>
+        <label>Flight No:
+            <input type="text" name="flightNo"> 
+        </label><br><br>
+        <label>Departs
+            <input type="datetime-local" name="departs" value="<%= departsDate %>">
+        </label><br><br>
+        <button type="submit" class="btn btn-success">Add Flight</button>
+    </form>
+</div>
+
+<%- include('../partials/footer') %>
