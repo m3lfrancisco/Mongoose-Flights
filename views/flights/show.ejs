@@ -11,7 +11,7 @@
     <div><%= flight.departs %></div>
 </section>
 
-<br><br><h2>Destinations</h2>
+<br><br><h2>Destinations</h2><br>
 <form action="/flights/<%= flight._id %>/destinations" method="POST" class="form-horizontal" align="center">
     <label>Airport:
     <select name="airport">
@@ -30,18 +30,17 @@
 </form>
 
 <% if(flight.destinations.length) { %>
-    <table>
+    <table class="table caption-top table-sm table-success table-striped table-hover table-bordered">
+        <caption>Destinations</caption>
         <thead>
             <tr>
-                <th>Destinations</th>
-                <th>Airport</th>
-                <th>Arrival</th>
+                <th scope="col">Airport</th>
+                <th scope="col">Arrival</th>
             </tr>
         </thead>
         <tbody>
             <% flight.destinations.forEach(function(d) { %>
                 <tr>
-                    <td><%= d.destinations %></td>
                     <td><%= d.airport %></td>
                     <td><%= d.arrival %></td>
                 </tr>

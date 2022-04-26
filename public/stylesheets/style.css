@@ -1,14 +1,33 @@
-* {
-  box-sizing: border-box;
-  font-family: Helvetica;
-  color: 
-}
-
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
+  
 a {
   color: #00B7FF;
+}
+
+h1 {
+  text-align: center;
+  padding: 20px;
+}
+
+#show-page {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 1rem;
+}
+
+#show-page div:nth-child(even) {
+  font-weight: bold;
+}
+
+h2 {
+  text-align: center;
+  color: deeppink;
+}
+
+caption {
+  font-weight: bold;
+  font-size: 20px;
+  color:royalblue;
 }
