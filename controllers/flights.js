@@ -1,6 +1,7 @@
 // Import the flight Schema, so we can create the flight object
 const res = require('express/lib/response');
 const Flight = require('../models/flight');
+const Ticket = require('../models/ticket');
 
 // this is a template we will render when the user visits
 // http://localhost:3000/flights/new
@@ -34,7 +35,9 @@ function index(req, res) {
 
 function show(req, res) {
     Flight.findById(req.params.id, function(err, flight) {
-        res.render('flights/show', { title: 'Flight Details', flight});
+        Ticket.find({flight: flight._id}, function(err, tickets) {
+            res.render('flights/show', { title: 'Flight Details', flight, tickets});
+        });
     });
 };
 
