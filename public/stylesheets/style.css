@@ -8,7 +8,7 @@ a {
 
 h1 {
   text-align: center;
-  padding: 20px;
+  padding: 10px;
 }
 
 #show-page {
@@ -19,6 +19,10 @@ h1 {
 
 #show-page div:nth-child(even) {
   font-weight: bold;
+}
+
+span {
+  padding: 10px;
 }
 
 h2 {

@@ -45,5 +45,5 @@ module.exports = {
     new: newFlight,
     create,
     index,
-    show
+    show,
 };
