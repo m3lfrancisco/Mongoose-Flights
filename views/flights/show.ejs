@@ -11,7 +11,7 @@
     <div><%= flight.departs %></div>
 </section>
 
-<br><br><h2>Destinations</h2><br>
+<br><h2>Destinations</h2><br>
 <form action="/flights/<%= flight._id %>/destinations" method="POST" class="form-horizontal" align="center">
     <label>Airport:
     <select name="airport">
@@ -50,5 +50,7 @@
 <% } else { %>
     <h5>No Destinations Added Yet</h5>
 <% } %>
+
+<a href="/tickets/new" class="btn btn-primary">New Ticket</a>
 
 <%- include('../partials/footer') %>
